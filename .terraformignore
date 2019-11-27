@@ -1,0 +1,9 @@
+_scratch/
+.circleci/
+.nyc_output/
+node_modules/
+postman/
+src/
+.eslintrc.js
+.gitignore
+.git/

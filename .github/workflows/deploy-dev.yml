@@ -1,0 +1,49 @@
+name: Test & Deploy Dev
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  deploy-lambda:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: NPM install
+        run: npm ci
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Coverage
+        run: npm run coverage
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+
+      - name: Create tar gz file
+        run:  tar --exclude *.terraform* -zcvf build.tar.gz build infrastructure
+
+      - name: Send run to Terraform Cloud
+        uses: addresscloud/terraform-cloud-action@master
+        with:
+          tfToken: ${{ secrets.TERRAFORM_TOKEN }}
+          tfOrg: 'Addresscloud'
+          tfWorkspace: 'exposure-dev-lambda'
+          filePath: './build.tar.gz'

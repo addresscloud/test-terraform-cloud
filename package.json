@@ -1,0 +1,39 @@
+{
+  "name": "testing-terraform-cloud",
+  "version": "0.0.1",
+  "description": "AWS Lambda to test Terraform Cloud API",
+  "main": "index.js",
+  "scripts": {
+    "build": "for dir in src/functions/*/; do name=`basename $dir`; if [ ! -d build/$name ]; then mkdir -p build/$name ; fi; node_modules/.bin/webpack --config src/webpack.config.babel.js --bail src/functions/$name -o build/$name/index.js; done",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/addresscloud/test-terraform-cloud.git"
+  },
+  "author": "Tomas Holderness",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/addresscloud/test-terraform-cloud/issues"
+  },
+  "homepage": "https://github.com/addresscloud/test-terraform-cloud#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/register": "^7.7.0",
+    "@babel/runtime": "^7.7.2",
+    "aws-sdk": "^2.578.0",
+    "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
+    "codecov": "^3.6.1",
+    "dotenv": "^5.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-jsdoc": "^4.8.4",
+    "it-each": "^0.4.0",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
