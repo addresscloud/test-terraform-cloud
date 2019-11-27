@@ -3,25 +3,25 @@ resource "aws_iam_role" "hello_world_terraform" {
   name               = "hello_world_terraform"
   assume_role_policy = <<EOF
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "logs.eu-west-1.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
+"Version": "2012-10-17",
+"Statement": [
+{
+    "Action": "sts:AssumeRole",
+    "Principal": {
+    "Service": "logs.eu-west-1.amazonaws.com"
     },
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
+    "Effect": "Allow",
+    "Sid": ""
+},
+{
+    "Action": "sts:AssumeRole",
+    "Principal": {
+    "Service": "lambda.amazonaws.com"
+    },
+    "Effect": "Allow",
+    "Sid": ""
+}
+]
 }
 EOF
 
@@ -32,21 +32,21 @@ resource "aws_iam_role_policy" "hello_world_terraform" {
   role   = aws_iam_role.hello_world_terraform.name
   policy = <<EOF
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-        "Effect": "Allow",
-        "Action": [
-            "logs:*"
-        ],
-        "Resource": "arn:aws:logs:*:*:*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": ["lambda:InvokeFunction"],
-      "Resource": "*"
-    },
-  ]
+"Version": "2012-10-17",
+"Statement": [
+{
+    "Effect": "Allow",
+    "Action": [
+        "logs:*"
+    ],
+    "Resource": "arn:aws:logs:*:*:*"
+},
+{
+    "Effect": "Allow",
+    "Action": ["lambda:InvokeFunction"],
+    "Resource": "*"
+}
+]
 }
 EOF
 
