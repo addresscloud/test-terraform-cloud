@@ -1,3 +1,9 @@
+variable "profile" {
+}
+
+variable "region" {
+}
+
 terraform {
   backend "remote" {
   hostname = "app.terraform.io"
@@ -6,6 +12,11 @@ terraform {
       name = "hello-world-terraform"
     }
   }
+}
+
+provider "aws" {
+  profile = var.profile
+  region  = var.region
 }
 
 
