@@ -37,5 +37,5 @@ jobs:
         with:
           tfToken: ${{ secrets.TERRAFORM_TOKEN }}
           tfOrg: 'Addresscloud'
-          tfWorkspace: 'exposure-dev-lambda'
+          tfWorkspace: 'hello-world-terraform'
           filePath: './build.tar.gz'
