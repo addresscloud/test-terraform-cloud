@@ -63,7 +63,7 @@ data "archive_file" "hello_world_terraform" {
 resource "aws_lambda_function" "hello_world_terraform" {
   filename         = "../../../../build/hello-world.zip"
   source_code_hash = data.archive_file.hello_world_terraform.output_base64sha256
-  function_name    = "addresscloud-hello_world_terraform_${var.deployment}"
+  function_name    = "addresscloud-hello_world_terraform_dev"
   role             = aws_iam_role.hello_world_terraform.arn
   handler          = "index.default"
   runtime          = "nodejs10.x"
@@ -72,7 +72,7 @@ resource "aws_lambda_function" "hello_world_terraform" {
   publish          = true
   environment {
     variables = {
-      DEBUG        = var.env_debug
+      DEBUG        = "true"
     }
   }
 }
