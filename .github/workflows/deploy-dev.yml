@@ -29,11 +29,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Coverage
-        run: npm run coverage
-        env:
-          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-
       - name: Create tar gz file
         run:  tar --exclude *.terraform* -zcvf build.tar.gz build infrastructure
 
