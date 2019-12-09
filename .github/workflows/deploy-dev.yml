@@ -43,5 +43,5 @@ jobs:
           tfOrg: 'Addresscloud'
           tfWorkspace: 'hello-world-terraform'
           filePath: './build.tar.gz'
-          identifier: '123'
+          identifier: ${{ github.sha }} 
           
