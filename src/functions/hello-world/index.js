@@ -1,4 +1,4 @@
-// Hello world function handler
+// Hello world function handler.
 // testing with git sha, again.
 export default async(e, ctx, cb) => {
     try {
