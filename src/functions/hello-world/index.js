@@ -1,5 +1,5 @@
 // Hello world function handler
-// testing with git sha
+// testing with git sha, again.
 export default async(e, ctx, cb) => {
     try {
         console.log(`Hello World`)
