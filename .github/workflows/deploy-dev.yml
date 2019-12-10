@@ -37,7 +37,7 @@ jobs:
         run:  tar --exclude *.terraform* -zcvf build.tar.gz build infrastructure
 
       - name: Send run to Terraform Cloud
-        uses: addresscloud/terraform-cloud-action@v1
+        uses: addresscloud/terraform-cloud-action@v1.0.0
         with:
           tfToken: ${{ secrets.TERRAFORM_TOKEN }}
           tfOrg: 'Addresscloud'
