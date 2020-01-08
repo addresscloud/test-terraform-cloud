@@ -19,7 +19,6 @@ provider "aws" {
   region  = var.region
 }
 
-
 module "hello-world" {
   source           = "../../../modules/services/lambda"
 }
