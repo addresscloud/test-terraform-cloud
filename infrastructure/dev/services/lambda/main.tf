@@ -22,3 +22,4 @@ provider "aws" {
 module "hello-world" {
   source           = "../../../modules/services/lambda"
 }
+
